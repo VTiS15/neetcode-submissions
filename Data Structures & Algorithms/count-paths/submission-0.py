@@ -1,0 +1,15 @@
+from functools import cache
+
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        @cache
+        def dp(x, y):
+            if x >= m or y >= n:
+                return 0
+            if x == m - 1 and y == n - 1:
+                return 1
+            return dp(x + 1, y) + dp(x, y + 1)
+        
+        return dp(0, 0)
+        
